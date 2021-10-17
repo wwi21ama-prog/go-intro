@@ -1,5 +1,7 @@
 # Überblick zu Programmierkonzepten
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wwi21ama-prog/go-mybinder-env.git/HEAD?urlpath=lab%2Ftree%2Fworkspace%2Fgo-intro%2Fkonzepte%2F00_Ueberblick.ipynb)
+
 In diesem Ordner befinden sich eine Reihe von Dokumenten,
 die Stück für Stück die grundlegenden Konzepte beim Programmieren einführen sollen.
 
