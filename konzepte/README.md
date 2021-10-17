@@ -5,7 +5,7 @@ die Stück für Stück die grundlegenden Konzepte beim Programmieren einführen 
 
 Diese Infos sind in Form von [Jupyter-Notebooks](https://jupyter.org/) ausgeführt.
 Sie können hier im Repository gelesen oder in einer
-[interaktiven Umgebung](https://mybinder.org/v2/gh/wwi21ama-prog/go-mybinder-env.git/HEAD?labpath=workspace%2Fgo-intro%2Fkonzepte%2FREADME.md)
+[interaktiven Umgebung](https://mybinder.org/v2/gh/wwi21ama-prog/go-mybinder-env.git/HEAD?urlpath=lab%2Ftree%2Fworkspace%2Fgo-intro%2Fkonzepte%200_Ueberblick.ipynb)
 ausgeführt werden.
 
 ## Anmerkungen zur interaktiven Umgebung
