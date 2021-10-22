@@ -1,2 +1,2 @@
 language = "go"
-run = "cd beispiele && go run strings_arrays.go"
+run = "cd beispiele  && go run caesar.go"
