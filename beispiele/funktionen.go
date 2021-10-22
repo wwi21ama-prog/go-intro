@@ -24,20 +24,21 @@ func main() {
 // - wird beim Aufruf der Funktion eingesetzt
 // Rückgabetyp: Eine Zahl
 func plus2(x int) int { // "Signatur"
-	result := x + 2 + 1
+	result := x + 2
 	fmt.Println("func plus2 wurde ausgeführt")
 	return result // "return": Die Funktion ist zu Ende, das Ergebnis ist x+2
 }
 
-func checkPlus2(expected int, actual int) {
+func checkPlus2(x int, expected int) {
+  actual := plus2(x)
 	if actual != expected {
-		fmt.Printf("Fehler, plus2(3) sollte %v liefern, tut es aber nicht.\n", expected)
+		fmt.Printf("Fehler, plus2(%v) sollte %v liefern, tatsächlich wurde aber %v geliefert.\n", x, expected, actual)
 	}
 }
 
 func testPlus2() {
-	checkPlus2(5, plus2(3))
-	checkPlus2(-13, plus2(-15))
+	checkPlus2(3, 5)
+	checkPlus2(-15, -13)
 
 }
 
