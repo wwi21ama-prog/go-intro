@@ -2,7 +2,7 @@ tasks:
   - init: |
       go mod tidy
       env GO111MODULE=on go install github.com/go-delve/delve/cmd/dlv@master
-      mv /tmp/dlv $GOPATH/bin/dlv-dap
+      mv /tmp/dlv "$(go env GOPATH)"/bin/dlv-dap
       env GO111MODULE=on go install github.com/gopherdata/gophernotes@latest
       mkdir -p ~/.local/share/jupyter/kernels/gophernotes
       cd ~/.local/share/jupyter/kernels/gophernotes
