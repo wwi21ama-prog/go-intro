@@ -1,0 +1,6 @@
+tasks:
+  - init: |
+      go mod tidy
+vscode:
+  extensions:
+    - golang.go
