@@ -12,6 +12,8 @@ tasks:
 vscode:
   extensions:
     - golang.go
+    - ms-toolsai.jupyter
+    - ms-python.python
 github:
   prebuilds:
     # enable for the default branch (defaults to true)
