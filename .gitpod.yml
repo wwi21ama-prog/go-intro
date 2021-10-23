@@ -4,6 +4,7 @@ tasks:
       env GO111MODULE=on go install github.com/go-delve/delve/cmd/dlv@master
       mv "$(go env GOPATH)"/bin/dlv "$(go env GOPATH)"/bin/dlv-dap
       env GO111MODULE=on go install github.com/gopherdata/gophernotes@latest
+    command: |
       mkdir -p ~/.local/share/jupyter/kernels/gophernotes
       cd ~/.local/share/jupyter/kernels/gophernotes
       cp "$(go env GOPATH)"/pkg/mod/github.com/gopherdata/gophernotes@v0.7.3/kernel/*  "."
