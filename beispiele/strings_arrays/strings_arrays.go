@@ -1,4 +1,4 @@
-package main
+qpackage main
 
 import "fmt"
 import "math"
