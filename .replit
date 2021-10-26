@@ -1,2 +1,2 @@
 language = "go"
-run = "cd beispiele/konsoleneingabe  && go run ."
+run = "cd tictactoe && go run ."
