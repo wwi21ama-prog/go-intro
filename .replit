@@ -1,2 +1,2 @@
 language = "go"
-run = "cd beispiele/wurzeln  && go run ."
+run = "cd beispiele/arrays  && go run ."
