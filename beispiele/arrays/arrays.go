@@ -89,10 +89,16 @@ func digitSum(x int) int {
 func digitList(x int) []int {
   result := make([]int, 0)
 
-  // TODO: Schleife, die die Ziffern von x berechnet und mittels append an result anhängt.
+  // Schleife, die die Ziffern von x berechnet und mittels append an result anhängt.
+  for ; x != 0 ; {
+    result = append(result, x % 10)
+    x = x / 10
+  }
 
   return result
 }
+
+
 
 
 // https://www.arndt-bruenner.de/mathe/scripts/pruefziffern.htm 
