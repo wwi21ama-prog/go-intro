@@ -7,6 +7,11 @@ func main() {
 
   printBoard(spielfeld)
 
+  fmt.Println(checkRows(spielfeld)) // Soll false ausgeben
+
+  spielfeld2 := makeBoard(3, "X")
+  fmt.Println(checkRows(spielfeld2)) // Soll true ausgeben
+
 }
 
 
@@ -44,3 +49,39 @@ func printRow(row []string) {
   }
   fmt.Println()
 }
+
+
+// Nimmt das Board als Parameter und liefert true, wenn
+// es in einer Zeile drei mal X enthält.
+func checkRows(board [][]string) bool {
+  // Zeile 0 pruefen
+  for _, row := range(board) {
+    if checkRow(row) {
+      return true // Early Out
+    }
+  }
+  return false
+}
+
+// Prüft eine einzelne Zeile, ob sie drei X enthält.
+func checkRow(row []string) bool {
+  return row[0] == row[1] &&
+         row[1] == row[2] && 
+         row[2] == "X"
+}
+
+
+// Nimmt das Board als Parameter und liefert true, wenn
+// es in einer Spalte drei mal X enthält.
+func checkColumns(board [][]string) bool  {
+  return false // TODO
+}
+
+// Nimmt das Board als Parameter und liefert true, wenn
+// es in einer Diagonale drei mal X enthält.
+func checkDiagonals(board [][]string) bool  {
+  return false // TODO
+}
+
+
+
