@@ -3,35 +3,44 @@ package main
 import "fmt"
 
 func main() {
-  // Definieren eines 2D-Arrays
-  var spielfeld [3][3]string
+  spielfeld := makeBoard(3, "*")
 
- // Jede Zeile einzeln ausgeben
-  for zeile := 0; zeile < 3; zeile++ {
-    fmt.Println(spielfeld[zeile])
-  } 
+  printBoard(spielfeld)
 
-  // Überall ins Spielfeld Leerzeichen schreiben.
-  // Schleife, die über die Zeilen iteriert
-  // Innerhalb: Schleife, die über jedes Element der Zeile iteriert. Diese Schleife muss Leerzeichen schreiben.
-  spielfeld = fillBoard(spielfeld, "A")
-
-
-  // Ein X in Zeile 2, Spalte 0 setzen.
-  spielfeld[2][0] = "X"
-
-  // Das Spielfeld ausgeben:
-  fmt.Println(spielfeld)
-
-  // Die Länge des Elements an Stelle (0,0) bestimmen:
-  fmt.Println(len(spielfeld[0][0]))
 }
 
-func fillBoard(spielfeld [3][3]string, s string) [3][3]string {
-  for zeile := 0; zeile < 3; zeile++ {
-    for spalte := 0; spalte < 3; spalte++ {
-      spielfeld[zeile][spalte] = s
+
+func makeBoard(size int, initChar string) [][]string {
+  // Definieren einer 2D-Slice
+  var board [][]string
+  
+  for i := 0; i<size; i++ {
+    var row []string
+    for j := 0; j < size; j++ {
+      row = append(row, initChar)
+    }
+    board = append(board, row)
+  }
+  return board
+}
+
+// Das Spielfeld mit Trennlinien ausgeben.
+func printBoard(board [][]string) {
+  for i,row := range(board){
+    printRow(row)
+    if i < len(board) - 1 {
+      fmt.Println("---+---+---")
     }
   }
-  return spielfeld
+}
+
+// Eine Zeile des Spielfelds mit Trennzeichen ausgeben.
+func printRow(row []string) {
+  for j := 0; j<len(row); j++ {
+    fmt.Print(" "+row[j]+" ")
+    if j<len(row)-1 {
+      fmt.Print("|")
+    }
+  }
+  fmt.Println()
 }
