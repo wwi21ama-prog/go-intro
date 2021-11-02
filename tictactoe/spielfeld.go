@@ -3,17 +3,30 @@ package main
 import "fmt"
 
 func main() {
-  spielfeld := makeBoard(3, "*")
+  spielfeld := makeBoard(3, " ")
 
-  printBoard(spielfeld)
-
-  fmt.Println(checkRows(spielfeld, "X")) // Soll false ausgeben
-
-  spielfeld2 := makeBoard(3, "X")
-  fmt.Println(checkRows(spielfeld2, "X")) // Soll true ausgeben
-
+  mainLoop(spielfeld)
 }
 
+// Abwechselnd Spieler X und O nach ihren Zügen fragen,
+// die Züge machen und auswerten, ob jemand gewonnen hat.
+func mainLoop(board [][]string) {
+  currentPlayer := "X"
+
+  for !checkWinner(board,currentPlayer) {
+
+    // Den Spieler wechseln
+
+    // Den aktuellen Spieler nach seinem Zug fragen und ihn ausführen.
+    move(board, currentPlayer)
+
+  }
+}
+
+
+func move(board [][]string, char string) {
+
+}
 
 func makeBoard(size int, initChar string) [][]string {
   // Definieren einer 2D-Slice
@@ -79,7 +92,6 @@ func getColumn(board [][]string, i int) []string {
   for _,row := range(board) {
     result = append(result,row[i])
   }
-  // TODO
   return result
 }
 
@@ -95,9 +107,42 @@ func checkColumns(board [][]string, char string) bool  {
   return false
 }
 
+// Liefert die Diagonale von links oben nach rechts unten.
+func getDiagonal1(board [][]string) []string {
+  var result []string
+  for i,_ := range(board) {
+    result = append(result,board[i][i])
+  }
+
+  return result
+}
+
+// Liefert die Diagonale von rechts oben nach links unten.
+func getDiagonal2(board [][]string) []string {
+  var result []string
+  l := len(board)-1
+  for i,_ := range(board) {
+    result = append(result,board[i][l-i])
+  }
+
+  return result
+}
+
+
 // Nimmt das Board als Parameter und liefert true, wenn
 // es in einer Diagonale drei mal 'char' enthält.
 func checkDiagonals(board [][]string, char string) bool  {
-  return false // TODO
+  if checkList(getDiagonal1(board), char) {
+    return true
+  }
+  if checkList(getDiagonal2(board), char) {
+    return true
+  }
+
+  return false
 }
 
+// Prüft, ob der Spieler mit dem Zeichen 'char' gewonnen hat.
+func checkWinner(board [][]string, char string) bool {
+  return checkRows(board,char) || checkColumns(board,char) || checkDiagonals(board,char)
+}
