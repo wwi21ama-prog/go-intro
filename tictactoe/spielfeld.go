@@ -7,10 +7,10 @@ func main() {
 
   printBoard(spielfeld)
 
-  fmt.Println(checkRows(spielfeld)) // Soll false ausgeben
+  fmt.Println(checkRows(spielfeld, "X")) // Soll false ausgeben
 
   spielfeld2 := makeBoard(3, "X")
-  fmt.Println(checkRows(spielfeld2)) // Soll true ausgeben
+  fmt.Println(checkRows(spielfeld2, "X")) // Soll true ausgeben
 
 }
 
@@ -52,36 +52,52 @@ func printRow(row []string) {
 
 
 // Nimmt das Board als Parameter und liefert true, wenn
-// es in einer Zeile drei mal X enthält.
-func checkRows(board [][]string) bool {
+// es in einer Zeile drei mal 'char' enthält.
+func checkRows(board [][]string, char string) bool {
   // Zeile 0 pruefen
   for _, row := range(board) {
-    if checkRow(row) {
+    if checkList(row, char) {
       return true // Early Out
     }
   }
   return false
 }
 
-// Prüft eine einzelne Zeile, ob sie drei X enthält.
-func checkRow(row []string) bool {
-  return row[0] == row[1] &&
-         row[1] == row[2] && 
-         row[2] == "X"
+// Prüft eine einzelne Zeile, ob sie drei mal 'char' enthält.
+func checkList(row []string, char string) bool {
+  for _,element := range(row) {
+    if element != char {
+      return false
+    }
+  }
+  return true
 }
 
+// Liefert die i-te Spalte des Spielfelds als Liste.
+func getColumn(board [][]string, i int) []string {
+  var result []string
+  for _,row := range(board) {
+    result = append(result,row[i])
+  }
+  // TODO
+  return result
+}
 
 // Nimmt das Board als Parameter und liefert true, wenn
-// es in einer Spalte drei mal X enthält.
-func checkColumns(board [][]string) bool  {
-  return false // TODO
+// es in einer Spalte drei mal 'char' enthält.
+// Funktioniert erstmal nur für quadratische Spielfelder.
+func checkColumns(board [][]string, char string) bool  {
+  for i,_ := range(board) {
+    if checkList(getColumn(board, i), char) {
+      return true // Early Out
+    }
+  }
+  return false
 }
 
 // Nimmt das Board als Parameter und liefert true, wenn
-// es in einer Diagonale drei mal X enthält.
-func checkDiagonals(board [][]string) bool  {
+// es in einer Diagonale drei mal 'char' enthält.
+func checkDiagonals(board [][]string, char string) bool  {
   return false // TODO
 }
-
-
 
