@@ -11,11 +11,17 @@ func main() {
 // Abwechselnd Spieler X und O nach ihren Zügen fragen,
 // die Züge machen und auswerten, ob jemand gewonnen hat.
 func mainLoop(board [][]string) {
-  currentPlayer := "X"
+  currentPlayer := "O"
 
+  // Solange der aktuelle Spieler nicht gewonnen hat...
   for !checkWinner(board,currentPlayer) {
 
     // Den Spieler wechseln
+    if currentPlayer == "X" {
+      currentPlayer = "O"
+    } else {
+      currentPlayer = "X"
+    }
 
     // Den aktuellen Spieler nach seinem Zug fragen und ihn ausführen.
     move(board, currentPlayer)
@@ -23,9 +29,25 @@ func mainLoop(board [][]string) {
   }
 }
 
-
+// Fragt den Spieler mit dem Zeichen 'char' nach seinem Zug
+// (z.B. Zeile und Spalte) und führt ihn aus.
 func move(board [][]string, char string) {
+  printBoard(board)
+  fmt.Printf("Spieler %v, du bist dran.\n", char)
 
+  var row, col int
+  
+  fmt.Print("Gib deine Zeile ein: ")
+  fmt.Scanln(&row)
+  fmt.Print("Gib deine Spalte ein: ")
+  fmt.Scanln(&col)
+
+  if row >=0 && row < 3 && col >= 0 && col < 3 && board[row][col] == " " {
+    board[row][col] = char
+  } else {
+    fmt.Println("Die Eingabe war ungültig, versuch's noch einmal.")
+    move(board, char)
+  }
 }
 
 func makeBoard(size int, initChar string) [][]string {
