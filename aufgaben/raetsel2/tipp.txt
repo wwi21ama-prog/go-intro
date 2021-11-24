@@ -1,0 +1,7 @@
+Wenn Sie den Funktionen nicht ansehen können, was sie tun, probieren Sie sie mit geeigneten Argumenten aus.
+D.h. nehmen Sie z.B. die folgenden Aufrufe und schauen Sie sich an, was sie ausgeben. Ändern Sie die Argumente, um zu verstehen, was passiert:
+
+fmt.Println(foo1(123))
+fmt.Println(foo2([]int{1,2,3,4,5,6,7,8,9}))
+fmt.Println(foo3([]int{1,2,3,4,5,6,7,8,9}, 15))
+fmt.Println(foo4([]int{1,2,3,4,5,6,7,8,9}, 3))
