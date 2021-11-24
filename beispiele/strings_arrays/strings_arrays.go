@@ -1,82 +1,73 @@
-qpackage main
+package main
 
-import "fmt"
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 
-  // Einen String definieren.
-  s1 := "Hallo"
-  fmt.Println(s1)
+	// Einen String definieren.
+	s1 := "Hallo"
+	fmt.Println(s1)
 
-  // s1 und seinen Typ mit Printf ausgeben.
-  fmt.Printf("%v: %T\n", s1, s1)
+	// s1 und seinen Typ mit Printf ausgeben.
+	fmt.Printf("%v: %T\n", s1, s1)
 
-  // Einen zweiten String definieren.
-  // Gleich einen Wert festlegen.
-  var s2 string = "Strings"
+	// Einen zweiten String definieren.
+	// Gleich einen Wert festlegen.
+	var s2 string = "Strings"
 
-  // Einen dritten String deklarieren...
-  var s3 string
+	// Einen dritten String deklarieren...
+	var s3 string
 
-  // ... einen Wert im Nachhinein festlegen:
-  s3 = s1 + " " + s2
-  fmt.Println(s3)
+	// ... einen Wert im Nachhinein festlegen:
+	s3 = s1 + " " + s2
+	fmt.Println(s3)
 
-  // Ein einzelnes Zeichen ("Character") definieren
-  c1 := 97
-  fmt.Println(c1)
+	// Ein einzelnes Zeichen ("Character") definieren
+	c1 := 97
+	fmt.Println(c1)
 
-  fmt.Printf("%c: %T\n", c1, c1)
-  
-  // Das 'a' an s1 anhängen und ausgeben.
-  s1 = s1 + string(c1)
-  fmt.Println(s1)
+	fmt.Printf("%c: %T\n", c1, c1)
 
-  // Versuch, einen String aus Ziffern in eine Zahl zu konvertieren:
-  //i1 := int("123")
+	// Das 'a' an s1 anhängen und ausgeben.
+	s1 = s1 + string(c1)
+	fmt.Println(s1)
 
-  fmt.Printf("%c\n", s1[3])
-  fmt.Println(string(s1[4]))
+	// Versuch, einen String aus Ziffern in eine Zahl zu konvertieren:
+	//i1 := int("123")
 
-  for i := 0; i < len(s1); i++ {
-    fmt.Println(string(s1[i]))
-  }
+	fmt.Printf("%c\n", s1[3])
+	fmt.Println(string(s1[4]))
 
-  fmt.Println(stringToInt("123"))
+	for i := 0; i < len(s1); i++ {
+		fmt.Println(string(s1[i]))
+	}
 
-  fmt.Println('1')
+	fmt.Println(stringToInt("123"))
 
-  //stringToIntFull("-1234")
+	fmt.Println('1')
+
+	//stringToIntFull("-1234")
 }
 
 // Funktion, die einen String erwartet, der nur Ziffern enthält, und die die entsprechende Zahl als int liefert.
 func stringToInt(s string) int {
-  result := 0
+	result := 0
 
-  for i := 0; i < len(s); i++ {
-    //result = result + ziffer * 10^(len(s) - i - 1)
-    ziffer := int(s[i] - '0')
-    result = result + ziffer * myPow(10, len(s) - i - 1)
-  }
+	for i := 0; i < len(s); i++ {
+		//result = result + ziffer * 10^(len(s) - i - 1)
+		ziffer := int(s[i] - '0')
+		result = result + ziffer*myPow(10, len(s)-i-1)
+	}
 
-  return result
+	return result
 }
 
 func myPow(base int, exponent int) int {
-  return int(math.Pow(float64(base), float64(exponent)))
+	return int(math.Pow(float64(base), float64(exponent)))
 }
-
-
-
-
-
-
-
-
-
-
-
 
 func stringToIntFull(s string) int {
 	isNegative := false
@@ -108,7 +99,6 @@ func stringToIntFull(s string) int {
 
 		fmt.Printf("number: %v \t->\t %v;\t digit: %v;\t power: %v\n", numberBefore, number, digit, power)
 	}
-
 
 	if isNegative {
 		return number * -1
