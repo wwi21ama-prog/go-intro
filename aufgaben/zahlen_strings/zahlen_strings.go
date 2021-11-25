@@ -8,7 +8,7 @@ import (
 // z.B. 42 -> "zweiundvierzig"
 //     123 -> "einhundertdreiundzwanzig"
 func numToString(n int) string {
-	digitList := split(numToList(n), 3)
+	digitList := split(numToList(n))
 	fmt.Println(digitList)
 	return ""
 }
@@ -57,7 +57,7 @@ func fill(list []int, size int) []int {
 }
 
 // Erwartet eine Liste von Zahlen und splittet sie in Blöcke der angegebenen Länge auf. Liefert eine (zweidimensionale) Liste von Blöcken, die selbst jeweils size Zahlen enthalten.
-func split(list []int, size int) [][]int {
+func split(list []int) [][]int {
 	for len(list)%3 != 0 {
 		list = fill(list, len(list)+1)
 	}
